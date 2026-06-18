@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_nn_fund_account,nn.fund.account,model_nn_fund_account,,1,1,1,1
 access_nn_incoming_fund,nn.incoming.fund,model_nn_incoming_fund,,1,1,1,1
+access_nn_fund_project,nn.fund.project,model_nn_fund_project,,1,1,1,1
+access_nn_expense_head,nn.expense.head,model_nn_expense_head,,1,1,1,1
+access_nn_fund_allocation,nn.fund.allocation,model_nn_fund_allocation,,1,1,1,1
+access_nn_approval_history,nn.approval.history,model_nn_approval_history,,1,1,1,1

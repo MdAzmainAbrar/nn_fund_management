@@ -6,4 +6,10 @@
         <field name="prefix">INF/%(year)s/</field>
         <field name="padding">4</field>
     </record>
+   <record id="seq_fund_allocation" model="ir.sequence">
+       <field name="name">Fund Allocation</field>
+       <field name="code">nn.fund.allocation</field>
+       <field name="prefix">FA/%(year)s/</field>
+       <field name="padding">4</field>
+   </record>
 </odoo>
