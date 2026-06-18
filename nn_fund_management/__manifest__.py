@@ -8,8 +8,10 @@
     'depends': ['base', 'mail', 'web'],
     'data': [
     'security/ir.model.access.csv',
+    'data/sequences.xml',
     'views/fund_account_view.xml',
-],
+    'views/incoming_fund_view.xml',
+    ],
     'installable': True,
     'application': True,
 }

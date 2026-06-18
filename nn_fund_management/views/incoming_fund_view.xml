@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_incoming_fund_form" model="ir.ui.view">
+        <field name="name">nn.incoming.fund.form</field>
+        <field name="model">nn.incoming.fund</field>
+        <field name="arch" type="xml">
+            <form string="Incoming Fund">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object"
+                            class="oe_highlight"
+                            invisible="state == 'confirmed'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="fund_account_id"/>
+                            <field name="date"/>
+                            <field name="amount"/>
+                            <field name="transaction_ref"/>
+                        </group>
+                        <group>
+                            <field name="sender"/>
+                            <field name="company_id"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_incoming_fund_list" model="ir.ui.view">
+        <field name="name">nn.incoming.fund.list</field>
+        <field name="model">nn.incoming.fund</field>
+        <field name="arch" type="xml">
+            <tree string="Incoming Funds">
+                <field name="name"/>
+                <field name="fund_account_id"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="transaction_ref"/>
+                <field name="sender"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_incoming_fund" model="ir.actions.act_window">
+        <field name="name">Incoming Funds</field>
+        <field name="res_model">nn.incoming.fund</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_incoming_funds"
+        name="Incoming Funds"
+        parent="menu_fund_management_root"
+        action="action_incoming_fund"
+        sequence="20"/>
+
+</odoo>

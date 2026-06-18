@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_nn_fund_account,nn.fund.account,model_nn_fund_account,,1,1,1,1
+access_nn_incoming_fund,nn.incoming.fund,model_nn_incoming_fund,,1,1,1,1
