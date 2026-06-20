@@ -5,7 +5,7 @@
     'summary': 'Manage incoming funds, allocations, requisitions and transfers',
     'author': 'Md Azmain Abrar',
     'license': 'LGPL-3',
-    'depends': ['base', 'mail', 'web'],
+    'depends': ['base', 'mail', 'mail_bot', 'web'],
     'data': [
     'security/security_groups.xml',
     'security/ir.model.access.csv',

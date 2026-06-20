@@ -78,6 +78,8 @@ class FundAllocation(models.Model):
         for rec in self:
             if rec.state != 'gm_approval':
                 raise UserError("This request is not waiting for GM approval.")
+            if not self.env.user.has_group('nn_fund_management.group_gm_approver'):
+                raise UserError("Only GM Approvers can perform this action.")
             if rec.requested_by == self.env.user:
                 raise UserError("You cannot approve your own request.")
             rec.state = 'md_approval'
@@ -87,9 +89,10 @@ class FundAllocation(models.Model):
         for rec in self:
             if rec.state != 'md_approval':
                 raise UserError("This request is not waiting for MD approval.")
+            if not self.env.user.has_group('nn_fund_management.group_md_approver'):
+                raise UserError("Only MD Approvers can perform this action.")
             if rec.requested_by == self.env.user:
                 raise UserError("You cannot approve your own request.")
-            # Move from hold to assigned
             rec.fund_account_id.on_hold -= rec.amount
             rec.fund_account_id.total_assigned += rec.amount
 
