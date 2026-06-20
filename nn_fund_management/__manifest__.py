@@ -14,6 +14,7 @@
     'views/incoming_fund_view.xml',
     'views/project_expense_view.xml',
     'views/fund_allocation_view.xml',
+    'views/fund_requisition_view.xml',
     ],
     'installable': True,
     'application': True,

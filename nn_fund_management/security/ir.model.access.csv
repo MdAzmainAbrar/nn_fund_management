@@ -5,3 +5,5 @@ access_nn_fund_project,nn.fund.project,model_nn_fund_project,group_fund_user,1,1
 access_nn_expense_head,nn.expense.head,model_nn_expense_head,group_fund_user,1,1,1,0
 access_nn_fund_allocation,nn.fund.allocation,model_nn_fund_allocation,group_fund_user,1,1,1,0
 access_nn_approval_history,nn.approval.history,model_nn_approval_history,group_fund_user,1,1,1,0
+access_nn_fund_requisition,nn.fund.requisition,model_nn_fund_requisition,group_fund_user,1,1,1,0
+access_nn_requisition_approval_history,nn.requisition.approval.history,model_nn_requisition_approval_history,group_fund_user,1,1,1,0
