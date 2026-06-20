@@ -18,4 +18,10 @@
     <field name="prefix">REQ/%(year)s/</field>
     <field name="padding">4</field>
 </record>
+<record id="seq_fund_transfer" model="ir.sequence">
+    <field name="name">Fund Transfer</field>
+    <field name="code">nn.fund.transfer</field>
+    <field name="prefix">TRF/%(year)s/</field>
+    <field name="padding">4</field>
+</record>
 </odoo>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_fund_transfer_form" model="ir.ui.view">
+        <field name="name">nn.fund.transfer.form</field>
+        <field name="model">nn.fund.transfer</field>
+        <field name="arch" type="xml">
+            <form string="Fund Transfer">
+                <header>
+                    <button name="action_submit" string="Submit" type="object"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_gm_approve" string="GM Approve" type="object"
+                            class="oe_highlight" invisible="state != 'gm_approval'"/>
+                    <button name="action_md_approve" string="MD Approve" type="object"
+                            class="oe_highlight" invisible="state != 'md_approval'"/>
+                    <button name="action_reject" string="Reject" type="object"
+                            invisible="state not in ('gm_approval', 'md_approval')"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            invisible="state in ('approved', 'rejected', 'cancelled')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,submitted,gm_approval,md_approval,approved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Source">
+                            <field name="source_type"/>
+                            <field name="source_project_id" invisible="source_type != 'project'"/>
+                            <field name="source_expense_id" invisible="source_type != 'expense'"/>
+                        </group>
+                        <group string="Destination">
+                            <field name="dest_type"/>
+                            <field name="dest_project_id" invisible="dest_type != 'project'"/>
+                            <field name="dest_expense_id" invisible="dest_type != 'expense'"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="reason"/>
+                        </group>
+                        <group>
+                            <field name="requested_by"/>
+                            <field name="request_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Approval History">
+                            <field name="transfer_approval_ids" readonly="1">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="approver_id"/>
+                                    <field name="level"/>
+                                    <field name="comment"/>
+                                    <field name="result"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fund_transfer_list" model="ir.ui.view">
+        <field name="name">nn.fund.transfer.list</field>
+        <field name="model">nn.fund.transfer</field>
+        <field name="arch" type="xml">
+            <tree string="Fund Transfers">
+                <field name="name"/>
+                <field name="source_type"/>
+                <field name="dest_type"/>
+                <field name="amount"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fund_transfer" model="ir.actions.act_window">
+        <field name="name">Fund Transfers</field>
+        <field name="res_model">nn.fund.transfer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_fund_transfer"
+        name="Fund Transfers"
+        parent="menu_fund_management_root"
+        action="action_fund_transfer"
+        sequence="45"/>
+
+</odoo>
