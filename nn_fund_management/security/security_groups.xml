@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Category for our groups -->
+    <record id="module_category_fund_management" model="ir.module.category">
+        <field name="name">Fund Management</field>
+    </record>
+
+    <!-- Fund User: can create and view requests -->
+    <record id="group_fund_user" model="res.groups">
+        <field name="name">Fund User</field>
+        <field name="category_id" ref="module_category_fund_management"/>
+    </record>
+
+    <!-- Finance User: can confirm incoming funds -->
+    <record id="group_finance_user" model="res.groups">
+        <field name="name">Finance User</field>
+        <field name="category_id" ref="module_category_fund_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_fund_user'))]"/>
+    </record>
+
+    <!-- GM Approver -->
+    <record id="group_gm_approver" model="res.groups">
+        <field name="name">GM Approver</field>
+        <field name="category_id" ref="module_category_fund_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_fund_user'))]"/>
+    </record>
+
+    <!-- MD Approver -->
+    <record id="group_md_approver" model="res.groups">
+        <field name="name">MD Approver</field>
+        <field name="category_id" ref="module_category_fund_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_fund_user'))]"/>
+    </record>
+
+    <!-- Fund Administrator: full access -->
+    <record id="group_fund_admin" model="res.groups">
+        <field name="name">Fund Administrator</field>
+        <field name="category_id" ref="module_category_fund_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_finance_user')), (4, ref('group_gm_approver')), (4, ref('group_md_approver'))]"/>
+    </record>
+
+</odoo>
