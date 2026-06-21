@@ -9,3 +9,4 @@ access_nn_fund_requisition,nn.fund.requisition,model_nn_fund_requisition,group_f
 access_nn_requisition_approval_history,nn.requisition.approval.history,model_nn_requisition_approval_history,group_fund_user,1,1,1,0
 access_nn_fund_transfer,nn.fund.transfer,model_nn_fund_transfer,group_fund_user,1,1,1,0
 access_nn_transfer_approval_history,nn.transfer.approval.history,model_nn_transfer_approval_history,group_fund_user,1,1,1,0
+access_nn_fund_bill,nn.fund.bill,model_nn_fund_bill,group_fund_user,1,1,1,0

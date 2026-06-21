@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_fund_bill_form" model="ir.ui.view">
+        <field name="name">nn.fund.bill.form</field>
+        <field name="model">nn.fund.bill</field>
+        <field name="arch" type="xml">
+            <form string="Fund Bill">
+                <header>
+                    <button name="action_post" string="Post" type="object"
+                            class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            invisible="state == 'cancelled'"/>
+                    <button name="action_reset_draft" string="Reset to Draft" type="object"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,posted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="requisition_id"/>
+                            <field name="project_id" readonly="1"/>
+                            <field name="expense_head_id" readonly="1"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="bill_date"/>
+                            <field name="description"/>
+                            <field name="attachment"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fund_bill_list" model="ir.ui.view">
+        <field name="name">nn.fund.bill.list</field>
+        <field name="model">nn.fund.bill</field>
+        <field name="arch" type="xml">
+            <tree string="Fund Bills">
+                <field name="name"/>
+                <field name="requisition_id"/>
+                <field name="project_id"/>
+                <field name="expense_head_id"/>
+                <field name="amount"/>
+                <field name="bill_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fund_bill" model="ir.actions.act_window">
+        <field name="name">Fund Bills</field>
+        <field name="res_model">nn.fund.bill</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_fund_bill"
+        name="Fund Bills"
+        parent="menu_fund_management_root"
+        action="action_fund_bill"
+        sequence="38"/>
+
+    <!-- Add bills to requisition form -->
+    <record id="view_fund_requisition_form_bills" model="ir.ui.view">
+        <field name="name">nn.fund.requisition.form.bills</field>
+        <field name="model">nn.fund.requisition</field>
+        <field name="inherit_id" ref="view_fund_requisition_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Bills">
+                    <field name="bill_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="amount"/>
+                            <field name="bill_date"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
