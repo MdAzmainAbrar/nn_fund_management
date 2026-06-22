@@ -151,7 +151,7 @@ All of the above were verified manually in the development environment with real
 
 ## 11. Demo Video
 
-📹 **Screen recording (Google Drive, public link):** `[PASTE YOUR GOOGLE DRIVE LINK HERE]`
+📹 **Screen recording (Google Drive, public link):** `(https://drive.google.com/file/d/1jkWqc80cEKv2oI0YY7gpQMjQMh6fAXDM/view?usp=sharing)`
 
 The video covers: AI tools used, implemented features, which parts were AI-assisted vs. self-written, errors found in AI-generated code, changes made by the candidate, known limitations, and which parts were fully understood and implemented independently.
 
